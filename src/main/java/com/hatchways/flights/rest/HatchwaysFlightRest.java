@@ -3,6 +3,7 @@ package com.hatchways.flights.rest;
 
 import com.hatchways.flights.rest.request.RequestEvent;
 import com.hatchways.flights.rest.response.Response;
+import com.hatchways.flights.rest.response.TicketResponse;
 import com.hatchways.flights.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,6 @@ public class HatchwaysFlightRest {
     @GetMapping("/flights")
     public ResponseEntity<Response> getFlightsInfos(@RequestParam(required = false) String startDate,
                                                     @RequestParam(required = false) String endDate){
-        return null;
+        return ResponseEntity.ok().body(new TicketResponse());
     }
 }
