@@ -15,7 +15,7 @@ Import and build with graddle.
 	<li>Data JPA (+Hibernate)</li>
 	<li>PostgreSQL</li>
 	<li>Graddle</li>
-	<li>lombok <i>(if you do not have the plugin you will need to install it)</i></li>
+	<li>Lombok <i>(if you do not have the plugin you will need to install it)</i></li>
 	<li>Junit</li>
 </ul>
 
