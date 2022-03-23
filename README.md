@@ -5,7 +5,7 @@ Spring back-end assessment - Flights
 ## Usage
 Import and build with graddle.
 <br>The port by default will be 8080.
-<br>Do not forget to setup your PostgreSQL credentials.
+<br>Do not forget to setup your PostgreSQL credentials in the [application.properties](/src/main/resources/application.properties)
 
 ## Technologies
 
