@@ -1,7 +1,10 @@
 package com.hatchways.flights.model;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 
+@Data
 public class Event {
 
     @NotNull
