@@ -8,4 +8,8 @@ public class ErrorResponse extends Response{
     private String status = "failed";
     private String reason;
 
+    public ErrorResponse(String reason){
+        this.reason = reason;
+    }
+
 }
