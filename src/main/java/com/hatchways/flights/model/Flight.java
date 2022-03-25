@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -19,7 +20,16 @@ public class Flight {
     private String flightNumber;
     @Column(nullable = false)
     private LocalDate flightDate;
-    @OneToMany
-    private Set<Ticket> tickets;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Ticket> tickets = new HashSet<>();
+
+    public Flight(String flightNumber, LocalDate flightDate){
+        this.flightNumber = flightNumber;
+        this.flightDate = flightDate;
+    }
+
+    public void addTicketToFlight(Ticket ticket){
+        this.tickets.add(ticket);
+    }
 
 }
