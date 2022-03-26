@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface FlightRep {
+public interface CustomFlightRepository {
 
     Flight findById(String id);
     Flight save(Flight flight);
