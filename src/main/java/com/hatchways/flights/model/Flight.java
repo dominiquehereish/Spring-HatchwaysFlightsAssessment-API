@@ -1,6 +1,5 @@
 package com.hatchways.flights.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 @Entity(name = "flights")
 public class Flight {
@@ -23,9 +21,10 @@ public class Flight {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Ticket> tickets = new HashSet<>();
 
-    public Flight(String flightNumber, LocalDate flightDate){
+    public Flight(String flightNumber, LocalDate flightDate, Ticket ticket){
         this.flightNumber = flightNumber;
         this.flightDate = flightDate;
+        this.tickets.add(ticket);
     }
 
     public void addTicketToFlight(Ticket ticket){
