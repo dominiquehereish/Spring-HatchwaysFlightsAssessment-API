@@ -1,9 +1,5 @@
 package com.hatchways.flights.service;
 
-import com.hatchways.flights.model.Event;
-import com.hatchways.flights.repository.TicketRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDate;
 
 public class ValidationUtility {
