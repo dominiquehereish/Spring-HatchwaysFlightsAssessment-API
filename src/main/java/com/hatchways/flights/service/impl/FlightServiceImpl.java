@@ -1,12 +1,11 @@
 package com.hatchways.flights.service.impl;
 
-import com.hatchways.flights.model.Event;
-import com.hatchways.flights.model.Flight;
-import com.hatchways.flights.model.Ticket;
+import com.hatchways.flights.model.*;
 import com.hatchways.flights.repository.CustomFlightRepository;
 import com.hatchways.flights.repository.TicketRepository;
 import com.hatchways.flights.rest.request.RequestEvent;
 import com.hatchways.flights.rest.response.ErrorResponse;
+import com.hatchways.flights.rest.response.FlightsResponse;
 import com.hatchways.flights.rest.response.Response;
 import com.hatchways.flights.rest.response.TicketResponse;
 import com.hatchways.flights.service.FlightService;
@@ -66,8 +65,21 @@ public class FlightServiceImpl implements FlightService {
         if(LocalDate.parse(endDate).isBefore(LocalDate.parse(startDate)))
             return ResponseEntity.badRequest().body(new ErrorResponse("endDate can not be before startDate"));
 
-        System.out.println(customFlightRepository.findByFlightDate(LocalDate.parse(startDate)));
-
-        return null;
+        FlightsResponse flightsResponse = new FlightsResponse();
+        LocalDate.parse(startDate).datesUntil(LocalDate.parse(endDate)).forEach(d -> {
+            FlightInfo flightInfo = new FlightInfo();
+            FlightFullInfo flightFullInfo = new FlightFullInfo();
+            flightFullInfo.setDate(d);
+            for(Flight flight : customFlightRepository.findByFlightDate(d)){
+                flightInfo.setFlightNumber(flight.getFlightNumber());
+                for(Ticket ticket : flight.getTickets()){
+                    flightInfo.addToRevenue(ticket.getTicketCost());
+                    flightInfo.addOccupiedSeat(ticket.getSeatNumber());
+                }
+                flightFullInfo.addFligths(flightInfo);
+                flightsResponse.addToDates(flightFullInfo);
+            }
+        });
+        return ResponseEntity.ok().body(flightsResponse);
     }
 }
