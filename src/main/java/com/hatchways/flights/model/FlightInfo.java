@@ -12,4 +12,11 @@ public class FlightInfo {
     private int revenue;
     private List<String> occupiedSeats = new ArrayList<>();
 
+    public void addToRevenue(int cost){
+        this.revenue = this.revenue + cost;
+    }
+
+    public void addOccupiedSeat(String seatNumber){
+        this.occupiedSeats.add(seatNumber);
+    }
 }

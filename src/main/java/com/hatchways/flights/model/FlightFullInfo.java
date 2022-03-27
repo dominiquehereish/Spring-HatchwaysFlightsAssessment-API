@@ -12,4 +12,8 @@ public class FlightFullInfo {
     private LocalDate date;
     private List<FlightInfo> flights = new ArrayList<>();
 
+    public void addFligths(FlightInfo flightInfo){
+        this.flights.add(flightInfo);
+    }
+
 }
